@@ -105,17 +105,8 @@ public class Program
         var result = await _pool.ExecuteWithPolicyAsync(BaseAddress, async channel =>
         {
             var client = new GenericGrpcService.GenericGrpcServiceClient(channel);
-
-            // forward lại headers giống code gateway
             var forwardHeaders = new Metadata();
-            foreach (var h in headers)
-            {
-                var key = h.Key.ToLowerInvariant();
-                if (!key.StartsWith(":"))
-                    forwardHeaders.Add(key, h.Value);
-            }
-
-            return await client.SendGenericMessageAsync(request, forwardHeaders);
+            return await client.SendGenericMessageAsync(request, headers);
         });
 
         Console.WriteLine(result);
