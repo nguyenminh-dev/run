@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package genericgrpc;
+
+option csharp_namespace = "run";
+
+message GenericRequest {
+    string message_type = 1;
+    bytes data = 2;
+}
+
+message GenericResponse {
+    bool success = 1;
+    string error_message = 2;
+    bytes data = 3;
+}
+
+service GenericGrpcService {
+    rpc SendGenericMessage(GenericRequest) returns (GenericResponse);
+    rpc SendGenericStreamingMessage(GenericRequest) returns (stream GenericResponse);
+}

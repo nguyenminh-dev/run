@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
+    <PackageReference Include="Serialize.Linq" Version="4.0.167" />
+    <PackageReference Include="Polly" Version="8.6.4" />
+    <Protobuf Include="generic.proto" GrpcServices="Both" />
+  </ItemGroup>
+
+</Project>
